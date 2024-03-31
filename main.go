@@ -9,5 +9,5 @@ func main() {
 
 	username := os.Getenv("USERNAME")
 
-	fmt.Println("%s says: Hola Mundo!", username)
+	fmt.Printf("%s says: Hola Mundo!\n", username)
 }
