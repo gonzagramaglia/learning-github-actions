@@ -17,5 +17,5 @@ jobs: #Definición de los jobs
       
       - name: Construir y ejecutra el programa en Go #Nombre del cuarto step
         run: |
-          go build -o hola-mundo .
-          . /hola-mundo
+          go build -o hola-mundo main.go
+          ./hola-mundo
