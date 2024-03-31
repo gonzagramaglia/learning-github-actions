@@ -7,9 +7,9 @@ jobs: #Definición de los jobs
       - name: Obtener IP para mostrar en el siguiente Step #Nombre del primer step
         id: ip #identificador usable dentro del job para otros steps
         uses: haythem/public-ip@v1.3 #Usará el action haythem/public-ip
-      - name: Saludo desde el Runner #Nombre del segundo step
+      - name: Saludar desde el Runner #Nombre del segundo step
         run: echo Hola Mundo desde ${{ steps.ip.outputs.ipv4 }}! #comando de bash
-      - name: Clonando repo en el Runner #Nombre del tercer step
+      - name: Clonar repo en el Runner #Nombre del tercer step
         uses: actions/checkout@v3
       - name: Definir variable global #Nombre del cuarto step
         run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
@@ -18,7 +18,7 @@ jobs: #Definición de los jobs
         with:
           go-version: 1.17
       
-      - name: Saludo desde el programa desarrollado en Go #Nombre del sexto step
+      - name: Saludar desde el programa desarrollado en Go #Nombre del sexto step
         run: |
           go build -o hola-mundo main.go
           ./hola-mundo
