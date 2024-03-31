@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+    "fmt"
+    "os"
+)
 
 func main() {
-	fmt.Println("Hola Mundo!")
+
+	username := os.Getenv("USERNAME")
+
+	fmt.Println("%s says: Hola Mundo!", username)
 }
