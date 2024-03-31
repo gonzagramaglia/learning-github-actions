@@ -2,22 +2,23 @@ name: hola-mundo #Nombre del workflow
 on: [push] #Evento que lo activará
 jobs: #Definición de los jobs
   imprimir-hola-mundo: #Nombre del job
-    runs-on: ubuntu-latest #Maquina en la que correrá
+    runs-on: ubuntu-latest #Maquina virtual (runner) en el que se va a ejecutar el workflow
     steps: #Lista de steps del job hola-mundo
       - name: Public IP #Nombre del primer step
         id: ip #identificador usable dentro del job para otros steps
         uses: haythem/public-ip@v1.3 #Usará el action haythem/public-ip
       - name: Hola mundo #Nombre del segundo step
         run: echo Hola Mundo desde ${{ steps.ip.outputs.ipv4 }}! #comando de bash
+      - name: Clonando repo en el runner #Nombre del tercer step
         uses: actions/checkout@v3
-      - name: Definir variable #Nombre del tercer step
+      - name: Definir variable #Nombre del cuarto step
         run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
-      - name: configurar Go #Nombre del cuarto step
+      - name: configurar Go #Nombre del quinto step
         uses: actions/setup-go@v2
         with:
           go-version: 1.17
       
-      - name: Construir y ejecutra el programa en Go #Nombre del cuarto step
+      - name: Construir y ejecutra el programa en Go #Nombre del sexto step
         run: |
           go build -o hola-mundo main.go
           ./hola-mundo
